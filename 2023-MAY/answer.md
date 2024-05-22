@@ -15,33 +15,33 @@
 
 a) i)
 
-Data is raw fact about things and events that is not yet been processed to reveal its meaning. 
+Data is raw facts about things and events that have not yet been processed to reveal their meaning. 
 
 a) ii)
 
-Information is processed and interpreted data that has meaning and able to support decision making.
+Information is processed and interpreted data that has meaning and can support decision-making.
 
 b) 
 
-- Single-User Database (One user / time)
+- Single-User Database (One user/time)
 - Desktop Database (Single-User Database running on a personal computer)
-- Multi-User Database (Multiple user / time)
-- Workgroup Database (Multi-User Database supports small group of user, eg. single department)
-- Enterprise Database (Multi-User Database supports large group of user, eg. a whole organisation)
+- Multi-User Database (Multiple user/time)
+- Workgroup Database (Multi-User Database supports a small group of users, eg. single department)
+- Enterprise Database (Multi-User Database supports a large group of users, eg. a whole organisation)
 
 c)
 
 - Backup Facilities 
- - Provide periodic backup operation that creates a copy of current database state
- - The backup copy will be store in secured off-site location waiting to be used to recover the database if encountering failure.
+	- Provide periodic backup operation that creates a copy of the current database state
+	- The backup copy will be stored in a secured off-site location waiting to be used to recover the database if encountering failure.
 - Journalising Facilities
- - Record audit trails of the transaction made towards the database and change in database
- - Used to reestablish the most consistent database state together with backup copy
+	- Record audit trails of the transaction made towards the database and changes in the database
+	- Used to recover the most consistent database state together with the most recent backup copy
 
 d)
 
-- Data Administration is a high-level function responsible for overall management of data resources in an organisation. Some of the data administrator roles are establish data policies and resolve data conflicts.
-- Database Administration is a technical function responsible for physical database design. The database administrators are concern with database configuration such as security enforcement and database performance.
+- Data Administration is a high-level function responsible for managing data resources in an organisation. Some of the data administrator roles are to establish data policies and resolve data conflicts.
+- Database Administration is a technical function responsible for physical database design. The database administrators are concerned with database configuration such as security enforcement and database performance.
 
 ### Question 2
 
@@ -61,13 +61,13 @@ TYPE(<ins>Type\_ID</ins>, Description, Hourly\_Charges, Daily\_Charges, Monthly\
 
 RENTAL(<ins>Member\_ID\*</ins>, <ins>Locker\_ID\*</ins>, <ins>date</ins>, <ins>time</ins>, duration)
 
-> RENTAL table uses composite key consists of Member\_ID, Locker\_ID, data and time.
+> RENTAL table uses composite key consists of Member\_ID, Locker\_ID, date and time.
 
 ### Question 3
 
 a) 
 
-- Insertion Anomaly: Insertion of new instructor data need to insert redundant event data and kid data.
+- Insertion Anomaly: Insertion of new instructor data requires inserting redundant event and kid data.
 - Modification Anomaly: Modification of event COL01's fees required to be performed to all 3 records that have this event to avoid data inconsistency.
 - Deletion Anomaly: Deletion of event SIN010 will cause data instructor A005 to be entirely removed from the database.
 
