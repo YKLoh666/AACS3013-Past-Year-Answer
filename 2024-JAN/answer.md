@@ -81,17 +81,26 @@ RENTAL(<ins>RentID</ins>, RentDate, CustID, Name, PhoneNo, <ins>CarID</ins>, Mod
 
 **2NF**
 
-RENTAL(<ins>RentID</ins>, RentDate, CustID, Name, PhoneNo, CarID\*, ReturnDate, Amount)
+RENTAL(<ins>RentID</ins>, RentDate, CustID, Name, PhoneNo)
+
+CAR_RENTAL(<ins>RentID\*</ins>, <ins>CarID\*</ins>, ReturnDate, Amount)
 
 CAR(<ins>CarID</ins>, Model, Owner)
 
 **3NF**
 
-RENTAL(<ins>RentID</ins>, RentDate, CustID\*, CarID\*, ReturnDate, Amount)
+RENTAL(<ins>RentID</ins>, RentDate, CustID\*)
+
+CUSTOMER(<ins>CustID</ins>, Name, PhoneNo)
+
+CAR_RENTAL(<ins>RentID\*</ins>, <ins>CarID\*</ins>, ReturnDate, Amount)
 
 CAR(<ins>CarID</ins>, Model, Owner)
 
-CUSTOMER(<ins>CustID</ins>, Name, PhoneNo)
+> Each `RENTAL` may includes multiple `CAR`, meanwhile each `CAR` may be rented in multiple `RENTAL`.
+>
+> For the question's case, each `CAR` within a single `RENTAL` can have different return date and rental amount, therefore these data are
+> belongs to the bridge table `CAR_RENTAL` due to the data is functionally dependent on both of the rental and the car.
 
 c)
 
