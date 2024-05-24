@@ -75,13 +75,15 @@ b)
 
 **1NF**
 
-REGISTRATION(<ins>EventID</ins>, Title, Fees, InstructorID, Name, InstructorHP, <ins>KidID</ins>, KidName, Sex, ParentHP, Day, Time)
+EVENT(<ins>EventID</ins>, Title, Fees, InstructorID, Name, InstructorHP, <ins>KidID</ins>, KidName, Sex, ParentHP, Day, Time)
+
+> Use the entity name of the non-repeating group as the table name
 
 **2NF**
 
-REGISTRATION(<ins>EventID\*</ins>, <ins>KidID\*</ins>, Day, Time)
-
 EVENT(<ins>EventID</ins>, Title, Fees, InstructorID, Name, InstructorHP)
+
+REGISTRATION(<ins>EventID\*</ins>, <ins>KidID\*</ins>, Day, Time)
 
 KID(<ins>KidID</ins>, KidName, Sex, ParentHP)
 
