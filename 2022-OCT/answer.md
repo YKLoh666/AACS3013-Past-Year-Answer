@@ -126,7 +126,10 @@ WHERE MemberNo = 'STU705';
 c)
 
 ```sql
-INSERT INTO Book (CallNum, ISBN, BookTitle, Author1, PublishedDate, PublisherNo) VALUES ('S10012345', 9001851234567, 'Lost In The Jungle', 'Krishnathan Makmur', '21-JAN-2021', 'KM101');
+INSERT INTO Book
+(CallNum, ISBN, BookTitle, Author1, PublishedDate, PublisherNo)
+VALUES ('S10012345', 9001851234567, 'Lost In The Jungle',
+'Krishnathan Makmur', '21-JAN-2021', 'KM101');
 ```
 
 d)
