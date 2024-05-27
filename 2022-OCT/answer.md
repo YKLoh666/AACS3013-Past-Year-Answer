@@ -19,7 +19,7 @@ Primary key is a unique identifier for each record in a database table. For inst
 
 a) ii)
 
-
+For example, a university course enrollment system contains 'Students' table, 'Courses' table and 'Enrollments' table that manages the many to many relationship between students and courses for each semester. Therefore, the 'Enrollments' table will contain three composite keys namely StudentID, CourseID and Semester. The issue with composite key is that other tables that need to reference this 'Enrollments' table must include all parts of the composite key (StudentID, CourseID and Semester) which complicates the foreign key relationships. To improve this design, we can use surrogate key for the 'Enrollments' table namely EnrollmentID. WHen other tables want to reference this 'Enrollments' table, they only need to include the single 'EnrollmentID' column which simplifies foreign key relationships.
 
 b) 
 
