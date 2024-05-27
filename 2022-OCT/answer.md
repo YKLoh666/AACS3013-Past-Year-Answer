@@ -19,7 +19,11 @@ Primary key is a unique identifier for each record in a database table. For inst
 
 a) ii)
 
-For example, a university course enrollment system contains 'Students' table, 'Courses' table and 'Enrollments' table that manages the many to many relationship between students and courses for each semester. Therefore, the 'Enrollments' table will contain three composite keys namely StudentID, CourseID and Semester. The issue with composite key is that other tables that need to reference this 'Enrollments' table must include all parts of the composite key (StudentID, CourseID and Semester) which complicates the foreign key relationships. To improve this design, we can use surrogate key for the 'Enrollments' table namely EnrollmentID. WHen other tables want to reference this 'Enrollments' table, they only need to include the single 'EnrollmentID' column which simplifies foreign key relationships.
+A university course enrollment system contains an ENROLLMENT table which uses a composite key to identify unique records, namely StudentID, CourseID and Semester.
+
+Another table called ATTENDANCE would like to reference this table's composite key. However, the composite key is formed by 3 fields of data, which will take up a substantial amount of space when the ATTENDANCE table is scaling up.
+
+The solution will be using a surrogate key for the ENROLLMENT table, which is an enrollmentID. With enrollmentID acting as a primary key for the ENROLLMENT table, the ATTENDANCE table can reference it as a foreign key. This reduces the size of the foreign key in the ATTENDANCE table which could save disk space.
 
 b) 
 
@@ -30,7 +34,7 @@ DBMS Functions :
 
 c)
 
-- Data redundancy is when different and conflicting versions of the same data appear in different places.
+- Data redundancy occurs when data of the same object is repeatedly defined multiple times within a single database. this redundancy creates space inefficiency and may produce data inconsistency.
 - Metadata is the data about data in which end-user data are integrated and managed.
 - Business rules are unambiguous description of a policy, procedure or principle within a specific organization.
 
@@ -70,7 +74,7 @@ b)
 
 **1NF**
 
-CLUB(<ins>ClubCOde</ins>, ClubName, ActivityDay, ActivityTime, AdvisorID, AdvisorName, <ins>StudentID</ins>, StudentName, ContactNo, Programme)
+CLUB(<ins>ClubCode</ins>, ClubName, ActivityDay, ActivityTime, AdvisorID, AdvisorName, <ins>StudentID</ins>, StudentName, ContactNo, Programme)
 
 > Use the entity name of the non-repeating group as the table name
 
@@ -139,10 +143,10 @@ WHERE MemberNo = (
 e)
 
 ```sql
-SELECT p.PublisherName, COUNT(b.CallNum) books_published_2022
+SELECT p.PublisherName 'Publisher Name', COUNT(b.CallNum) books_published_2022
 FROM Book b
 JOIN Publisher p ON b.PublisherNo = p.PublisherNo
-WHERE YEAR(PublishedDate) = 2022
+WHERE p.PublishedDate BETWEEN '1-JAN-2022' AND '31-DEC-2022'
 GROUP BY p.PublisherName
 ORDER BY books_published_2022 DESC;
 ```
