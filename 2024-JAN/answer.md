@@ -83,7 +83,7 @@ RENTAL(<ins>RentID</ins>, RentDate, CustID, Name, PhoneNo, <ins>CarID</ins>, Mod
 
 RENTAL(<ins>RentID</ins>, RentDate, CustID, Name, PhoneNo)
 
-CAR_RENTAL(<ins>RentID\*</ins>, <ins>CarID\*</ins>, ReturnDate, Amount)
+CAR\_RENTAL(<ins>RentID\*</ins>, <ins>CarID\*</ins>, ReturnDate, Amount)
 
 CAR(<ins>CarID</ins>, Model, Owner)
 
@@ -93,7 +93,7 @@ RENTAL(<ins>RentID</ins>, RentDate, CustID\*)
 
 CUSTOMER(<ins>CustID</ins>, Name, PhoneNo)
 
-CAR_RENTAL(<ins>RentID\*</ins>, <ins>CarID\*</ins>, ReturnDate, Amount)
+CAR\_RENTAL(<ins>RentID\*</ins>, <ins>CarID\*</ins>, ReturnDate, Amount)
 
 CAR(<ins>CarID</ins>, Model, Owner)
 
