@@ -139,6 +139,11 @@ WHERE MemberNo = (
 e)
 
 ```sql
-
+SELECT p.PublisherName, COUNT(b.CallNum) books_published_2022
+FROM Book b
+JOIN Publisher p ON b.PublisherNo = p.PublisherNo
+WHERE YEAR(PublishedDate) = 2022
+GROUP BY p.PublisherName
+ORDER BY books_published_2022 DESC;
 ```
 
