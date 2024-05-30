@@ -35,14 +35,23 @@ c)
 - Procedures
 - Data
 
-d)
+d) i)
+```sql
+SELECT * FROM STAFFB
+WHERE StaffID = 'S05' AND StaffID = 'S06';
+```
 
+d) ii)
+```sql
+SELECT * FROM StaffB b
+JOIN Department d ON b.DeptID = d.DeptID
+```
 
 ### Question 2
 
 a)
 
-![ERD Diagram](./question2a.png)
+![ERD Diagram](./question_2a.drawio.png)
 
 b)
 
