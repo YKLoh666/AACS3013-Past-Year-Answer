@@ -38,14 +38,17 @@ c)
 d) i)
 ```sql
 SELECT * FROM STAFFB
+MINUS
+SELECT * FROM StaffA
 WHERE StaffID = 'S05' AND StaffID = 'S06';
 ```
 
 d) ii)
 ```sql
 SELECT * FROM StaffB b
-JOIN Department d ON b.DeptID = d.DeptID
+LEFT JOIN Department d ON b.DeptID = d.DeptID
 ```
+> Use left join, otherwise S05 record will not exist in output.
 
 ### Question 2
 
@@ -72,8 +75,8 @@ CAKE_INGREDIENT(<ins>CakeID\*</ins>, <ins>IngredientID\*</ins>, IngredientAmount
 a) 
 
 - Insertion Anomaly: Insertion of new customer data requires to insert redundant home and staff data.
-- Modification Anomaly: Modification of price per night data of H01 needs to be made to all records that contains the specific home ID H01 to avoid data inconsistency.
-- Deletion Anomaly: Deletion of H04 will cause the customer C002 record to be removed from the database.
+- Modification Anomaly: Modification of price per night data of H01 needs to be made to all data that contains the specific home ID H01 to avoid data inconsistency.
+- Deletion Anomaly: Deletion of H04 will cause the customer C002 data to be removed from the database.
 
 b)
 
@@ -87,7 +90,7 @@ HOME(<ins>HomeID</ins>, Description, PricePerNight, StaffID, StaffHP, <ins>Custo
 
 HOME(<ins>HomeID</ins>, Description, PricePerNight, StaffID, StaffHP)
 
-BOOKING(<ins>HomeID\*</ins>, <ins>CustomerID\*</ins>, <ins>CheckInDate\*</ins>, <ins>CheckOutDate\*</ins>)
+BOOKING(<ins>HomeID\*</ins>, <ins>CustomerID\*</ins>, CheckInDate, CheckOutDate)
 
 CUSTOMER(<ins>CustomerID</ins>, CustomerName, CustomerHP)
 
@@ -110,15 +113,15 @@ a)
 ```sql
 CREATE TABLE Appointment (
 	AppointmentNo VARCHAR(7) NOT NULL,
-	ICNo VARCHAR(20) NOT NULL,
+	ICNo VARCHAR(14) NOT NULL,
 	VaccineNo VARCHAR(7) NOT NULL,
 	Appointment_Date DATE NOT NULL,
-	Status VARCHAR(30) NOT NULL,
-  Remark VARCHAR(50),
+	Status VARCHAR(9) NOT NULL,
+  	Remark VARCHAR(50),
 	PRIMARY KEY (AppointmentNo),
 	FOREIGN KEY (IcNo) REFERENCES Person(IcNo),
-	FOREIGN KEY (VaccineNo) REFERENCES Merchant(VaccineNo)
-  CONSTRAINT check_status CHECK (Status IN ('PENDING', 'COMPLETED', 'CANCELLED'))
+	FOREIGN KEY (VaccineNo) REFERENCES Vaccine(VaccineNo),
+  	CONSTRAINT check_status CHECK (Status IN ('PENDING', 'COMPLETED', 'CANCELLED'))
 );
 ```
 
@@ -133,7 +136,7 @@ WHERE VaccineNo = 'SIND01';
 b)
 
 ```sql
-INSERT INTO Merchant VALUES ('600125-12-1234', 'Kimberly Lee', '012-3456789', 'Sabah');
+INSERT INTO Person VALUES ('600125-12-1234', 'Kimberly Lee', '012-3456789', 'Sabah');
 ```
 
 d)
@@ -158,6 +161,8 @@ f)
 ```sql
 SELECT V.VaccineNo 'Vaccine Number', V.Vaccine_Description 'Vaccine Description', COUNT(A.AppointmentNo) 'No_Of_Doses_Given_2021'
 FROM Vaccine V
-JOIN Appointment A ON V.VaccineNo = A.VaccineNo
-WHERE (A.Appointment_Date BETWEEN '01-JAN-2021' AND '31-DEC-2021') AND (A.Status = 'COMPLETED'); 
+LEFT JOIN Appointment A ON V.VaccineNo = A.VaccineNo
+WHERE (A.Appointment_Date BETWEEN '01-JAN-2021' AND '31-DEC-2021') AND (A.Status = 'COMPLETED')
+GROUP BY V.VaccineNo;
 ```
+> Use LEFT JOIN instead cuz can include all Vaccines, and COUNT will ignore NULL value if the data from right table is empty.
