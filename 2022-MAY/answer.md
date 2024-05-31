@@ -39,14 +39,13 @@ d) i)
 ```sql
 SELECT * FROM STAFFB
 MINUS
-SELECT * FROM StaffA
-WHERE StaffID = 'S05' AND StaffID = 'S06';
+SELECT * FROM StaffA;
 ```
 
 d) ii)
 ```sql
 SELECT * FROM StaffB b
-LEFT JOIN Department d ON b.DeptID = d.DeptID
+LEFT JOIN Department d ON b.DeptID = d.DeptID;
 ```
 > Use left join, otherwise S05 record will not exist in output.
 
@@ -90,7 +89,7 @@ HOME(<ins>HomeID</ins>, Description, PricePerNight, StaffID, StaffHP, <ins>Custo
 
 HOME(<ins>HomeID</ins>, Description, PricePerNight, StaffID, StaffHP)
 
-BOOKING(<ins>HomeID\*</ins>, <ins>CustomerID\*</ins>, CheckInDate, CheckOutDate)
+BOOKING(<ins>HomeID\*</ins>, <ins>CustomerID\*</ins>, <ins>CheckInDate</ins>, CheckOutDate)
 
 CUSTOMER(<ins>CustomerID</ins>, CustomerName, CustomerHP)
 
@@ -102,7 +101,7 @@ HOME(<ins>HomeID</ins>, Description, PricePerNight, StaffID\*)
 
 STAFF(<ins>StaffID</ins>, StaffHP)
 
-BOOKING(<ins>HomeID\*</ins>, <ins>CustomerID\*</ins>, <ins>CheckInDate\*</ins>, <ins>CheckOutDate\*</ins>)
+BOOKING(<ins>HomeID\*</ins>, <ins>CustomerID\*</ins>, <ins>CheckInDate</ins>, CheckOutDate)
 
 CUSTOMER(<ins>CustomerID</ins>, CustomerName, CustomerHP)
 
