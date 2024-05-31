@@ -176,7 +176,7 @@ e)
 ```sql
 SELECT prodFinish Product_Finish, AVG(p.prodPrice) Average_Product_Price
 FROM Products
-WHERE prodPrice > 1000
+HAVING Average_Product_Price > 1000
 GROUP BY Product_Finish
 ORDER BY Product_Finish;
 ```
