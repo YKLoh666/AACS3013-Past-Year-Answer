@@ -146,7 +146,7 @@ WHERE MemberNo = (
 e)
 
 ```sql
-SELECT p.PublisherName 'Publisher Name', COUNT(b.CallNum) books_published_2022
+SELECT p.PublisherName "Publisher Name", COUNT(b.CallNum) books_published_2022
 FROM Book b
 JOIN Publisher p ON b.PublisherNo = p.PublisherNo
 WHERE p.PublishedDate BETWEEN '1-JAN-2022' AND '31-DEC-2022'
